@@ -1,0 +1,6 @@
+transformers==4.38.1
+torch==2.1.0
+torchvision
+gradio
+accelerate
+huggingface_hub==0.22.2
