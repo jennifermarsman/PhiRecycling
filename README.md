@@ -27,7 +27,7 @@ conda activate recycling
 python recycling.py
 ```
 
-### Setup for CPU 
+## Setup for CPU 
 
 Python and git large file system extension are required downloads. 
 Git LFS can be downloaded here: [LFS Link](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage?platform=windows) 
