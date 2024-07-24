@@ -1,6 +1,3 @@
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License
-
 import argparse
 import os
 import readline
@@ -11,7 +8,7 @@ import onnxruntime_genai as og
 def _complete(text, state):
     return (glob.glob(text+'*')+[None])[state]
 
-def run(args: argparse.Namespace):
+def run(args: argparse.Namespace, image_path):
     print("Loading model...")
     model = og.Model(args.model_path)
     processor = model.create_multimodal_processor()
@@ -21,7 +18,7 @@ def run(args: argparse.Namespace):
         readline.set_completer_delims(' \t\n;')
         readline.parse_and_bind("tab: complete")
         readline.set_completer(_complete)
-        image_path = input("Image Path (leave empty if no image): ")
+        # image_path = 'triangular-arrows-sign-for-recycle.png'
 
         image = None
         prompt = "<|user|>\n"
@@ -57,7 +54,7 @@ def run(args: argparse.Namespace):
             print()
 
         # Delete the generator to free the captured graph before creating another one
-        del generator
+        # del generator
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

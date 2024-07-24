@@ -40,10 +40,10 @@ pip install -r requirements.txt
 huggingface-cli download microsoft/Phi-3-vision-128k-instruct-onnx-cpu --include cpu-int4-rtn-block-32-acc-level-4/* --local-dir .
 pip install numpy
 pip install --pre onnxruntime-genai
-python cpu_recycling.py -m cpu-int4-rtn-block-32-acc-level-4
+python cpu_recycling_run.py -m cpu-int4-rtn-block-32-acc-level-4
 ```
 
 ### Subsequent Runs
 ```
-python cpu_recycling.py -m cpu-int4-rtn-block-32-acc-level-4
+python cpu_recycling_run.py -m cpu-int4-rtn-block-32-acc-level-4
 ```
