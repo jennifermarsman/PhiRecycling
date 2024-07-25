@@ -15,6 +15,7 @@ def run(image_path):
     model = og.Model(args.model_path)
     processor = model.create_multimodal_processor()
     tokenizer_stream = processor.create_stream()
+    output_text = ""
 
     while True:
         readline.set_completer_delims(' \t\n;')
@@ -50,13 +51,14 @@ def run(image_path):
             generator.generate_next_token()
 
             new_token = generator.get_next_tokens()[0]
-            output = tokenizer_stream.decode(new_token)
-            print(tokenizer_stream.decode(new_token), end='', flush=True)
+            token_text = tokenizer_stream.decode(new_token)
+            output_text += token_text
+            print(token_text, end='', flush=True)
         
         for _ in range(3):
             print()
-        return output
+        return output_text
         # Delete the generator to free the captured graph before creating another one
-        # del generator
+        del generator
 
 
