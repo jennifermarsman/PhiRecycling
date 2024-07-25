@@ -1,15 +1,15 @@
 import argparse
 from cpu_recycling import run
+import gradio as gr
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-m", "--model_path", type=str, required=True, help="Path to the model")
-    args = parser.parse_args()
-    image_path = 'triangular-arrows-sign-for-recycle.png'
-
-    # Call the run function from cpu_recycling.py
-    run(args, image_path)
-
+# UI using Gradio
+with gr.Blocks() as demo:
+    with gr.Row():
+        with gr.Column(scale=2):
+            cameraPic = gr.Image(value=None, sources=["upload", "clipboard", "webcam"], type="filepath", show_label=False, interactive=True, show_download_button=False)
+    with gr.Row():
+        txtModelOutput = gr.Textbox(label="AI-generated output", lines=6)
     
-if __name__ == "__main__":
-    main()
+    cameraPic.upload(fn=run, inputs=cameraPic, outputs=txtModelOutput)
+
+demo.launch()

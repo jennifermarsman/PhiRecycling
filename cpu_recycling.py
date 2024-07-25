@@ -2,13 +2,15 @@ import argparse
 import os
 import readline
 import glob
-
 import onnxruntime_genai as og
 
 def _complete(text, state):
     return (glob.glob(text+'*')+[None])[state]
 
-def run(args: argparse.Namespace, image_path):
+def run(image_path):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-m", "--model_path", type=str, required=True, help="Path to the model")
+    args = parser.parse_args()
     print("Loading model...")
     model = og.Model(args.model_path)
     processor = model.create_multimodal_processor()
@@ -48,16 +50,13 @@ def run(args: argparse.Namespace, image_path):
             generator.generate_next_token()
 
             new_token = generator.get_next_tokens()[0]
+            output = tokenizer_stream.decode(new_token)
             print(tokenizer_stream.decode(new_token), end='', flush=True)
         
         for _ in range(3):
             print()
-
+        return output
         # Delete the generator to free the captured graph before creating another one
         # del generator
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-m", "--model_path", type=str, required=True, help="Path to the model")
-    args = parser.parse_args()
-    run(args)
+
