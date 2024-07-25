@@ -12,8 +12,7 @@ def classify_image(image):
     else:
         output_image = 'bin.png'
     
-    return output_image
-
+    return result, output_image
 
 # UI using Gradio
 with gr.Blocks() as demo:
@@ -25,6 +24,7 @@ with gr.Blocks() as demo:
     with gr.Row():
         txtModelOutput = gr.Textbox(label="AI-generated output", lines=6)
     
-    cameraPic.upload(fn=run, inputs=cameraPic, outputs=txtModelOutput)
-    txtModelOutput.change(fn=classify_image, inputs=cameraPic, outputs=outputPic)
+    # Call the classify_image function and display both the text and image outputs
+    cameraPic.upload(fn=classify_image, inputs=cameraPic, outputs=[txtModelOutput, outputPic])
+
 demo.launch()
