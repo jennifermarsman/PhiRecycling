@@ -21,7 +21,6 @@ def run(image_path):
         readline.set_completer_delims(' \t\n;')
         readline.parse_and_bind("tab: complete")
         readline.set_completer(_complete)
-        # image_path = 'triangular-arrows-sign-for-recycle.png'
 
         image = None
         prompt = "<|user|>\n"

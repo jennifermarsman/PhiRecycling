@@ -3,10 +3,7 @@ from cpu_recycling import run
 import gradio as gr
 
 def classify_image(image):
-    # Run the classification
     result = run(image)
-    
-    # Determine the output image based on the result
     if 'YES' in result:
         output_image = 'triangular-arrows-sign-for-recycle.png'
     else:
@@ -24,7 +21,6 @@ with gr.Blocks() as demo:
     with gr.Row():
         txtModelOutput = gr.Textbox(label="AI-generated output", lines=6)
     
-    # Call the classify_image function and display both the text and image outputs
     cameraPic.upload(fn=classify_image, inputs=cameraPic, outputs=[txtModelOutput, outputPic])
 
 demo.launch()
