@@ -16,6 +16,8 @@ A new scenario that small language models like Phi could unlock is **sorting tra
 Let's imagine a public park with trash and recycling bins as an example.  An image understanding model like Phi 3 with vision could decide if an item held up to a camera was trash or recyclable, so it could be disposed of properly.  The prompt could be easily modified for local recycling guidelines.  Phi 3 can handle the enormous scale of many people throwing things away, and it could run locally without the need for network connectivity in an outdoor space.  The relative cost of a large language model in the cloud plus its connectivity requirements may not make this feasible for large language models, but this is a scenario that becomes possible with a model like Phi.  
 
 ## Demo Experience
+On the left side of the screen is an image placeholder.  Using the three small icons below it, you can upload a saved image, use your camera to take a picture, or paste an image from your clipboard.  After selecting an image, the model will run and determine if the item in the image is recyclable or not.  This output will be shown visually on the right side of the screen.  If it is recyclable, it will show a recycle symbol.  If it is non-recyclable, it will show a trash bin symbol.  
+
 This is an early version of the application, proving that it runs locally with no internet connectivity on an airplane.  
 !["The input to the model is an image of a woman on an airplane holding a plastic water bottle.  The output displayed is a large recycling symbol."](DemoUI-Recycle-Airplane.jpg)
 
