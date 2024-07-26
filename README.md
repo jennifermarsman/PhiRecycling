@@ -11,12 +11,6 @@ As small language models (SLM) are obviously smaller, the quality of image under
 ## Setup for CUDA compatible GPU
 
 Anaconda and Python are required downloads before running the commands below.
-To ensure Pytorch is CUDA compatible, run this in your Anaconda Prompt: 
-
-```
-conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
-```
-For the exact command for your specific CUDA version, more info is here: https://pytorch.org/ 
 
 ### First run
 ```
