@@ -14,20 +14,49 @@ A new scenario that small language models like Phi could unlock is **sorting tra
 + https://sustainabity.com/en/why-garbage-separation-matters-environmental-impact-and-benefits/
 
 Let's imagine a public park with trash and recycling bins as an example.  An image understanding model like Phi 3 with vision could decide if an item held up to a camera was trash or recyclable, so it could be disposed of properly.  The prompt could be easily modified for local recycling guidelines.  Phi 3 can handle the enormous scale of many people throwing things away, and it could run locally without the need for network connectivity in an outdoor space.  The relative cost of a large language model in the cloud plus its connectivity requirements may not make this feasible for large language models, but this is a scenario that becomes possible with a model like Phi.  
-
-## Setup
-
+ 
+## Setup for CUDA compatible GPU
+ 
+Anaconda and Python are required downloads before running the commands below.
+To ensure Pytorch is CUDA compatible, run this in your Anaconda Prompt:
+ 
+```
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+```
+For the exact command for your specific CUDA version, more info is here: https://pytorch.org/
+ 
 ### First run
 ```
 conda create --name recycling python=3.10 -y
 conda activate recycling
-
+ 
 pip install -r requirements.txt
 python recycling.py
 ```
-
+ 
 ### Subsequent runs
 ```
 conda activate recycling
 python recycling.py
+```
+ 
+## Setup for CPU
+ 
+Python and git large file system extension are required downloads. 
+Git LFS can be downloaded here: [LFS Link](https://docs.github.com/en/repositories/working-with-files/managing-large-files/installing-git-large-file-storage?platform=windows) 
+Then, run git lfs install in Git Bash
+ 
+### First Run 
+```
+pip install huggingface-hub[cli]
+pip install -r requirements.txt
+huggingface-cli download microsoft/Phi-3-vision-128k-instruct-onnx-cpu --include cpu-int4-rtn-block-32-acc-level-4/* --local-dir .
+pip install numpy
+pip install --pre onnxruntime-genai
+python cpu_recycling_run.py -m cpu-int4-rtn-block-32-acc-level-4
+```
+ 
+### Subsequent Runs
+```
+python cpu_recycling_run.py -m cpu-int4-rtn-block-32-acc-level-4
 ```
