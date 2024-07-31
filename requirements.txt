@@ -1,6 +1,6 @@
-transformers==4.38.1
-torch==2.1.0
+transformers
+torch
 torchvision
 gradio
-accelerate
-huggingface_hub==0.22.2
+#accelerate
+#huggingface_hub==0.22.2
