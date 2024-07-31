@@ -26,23 +26,25 @@ Here is the experience when the item cannot be recycled, like an aerosol can of 
  
 ## Setup for CUDA compatible GPU
  
-Anaconda and Python are required downloads before running the commands below.
-To ensure Pytorch is CUDA compatible, run this in your Anaconda Prompt:
- 
+This was tested on a machine with a CUDA-compatible GPU.  Run the below commands to set up the environment properly on your first run.  
+
+[Anaconda](https://www.anaconda.com/download/) is required to download before running the commands below.
+To ensure Pytorch is CUDA-compatible, you will need to run something like this in your Anaconda Prompt:
+
 ```
 conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 ```
 For the exact command for your specific CUDA version, more info is here: https://pytorch.org/
- 
+
 ### First run
 ```
 conda create --name recycling python=3.10 -y
 conda activate recycling
- 
+conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install -r requirements.txt
 python recycling.py
 ```
- 
+
 ### Subsequent runs
 ```
 conda activate recycling
