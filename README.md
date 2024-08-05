@@ -26,7 +26,7 @@ Here is the experience when the item cannot be recycled, like an aerosol can of 
  
 ## Setup for CUDA compatible GPU
  
-This was tested on a machine with a CUDA-compatible GPU.  Run the below commands to set up the environment properly on your first run.  
+This was tested on a machine with a CUDA-compatible GPU.  Run the below ["First run" commands](#first-run) to set up the environment properly on your first run.  
 
 [Anaconda](https://www.anaconda.com/download/) is required to download before running the commands below.
 To ensure Pytorch is CUDA-compatible, you will need to run something like this in your Anaconda Prompt:
